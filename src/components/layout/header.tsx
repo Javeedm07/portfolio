@@ -44,17 +44,15 @@ export function Header() {
                 )}
               >
                 {link.label}
-                <span className={cn(
-                    "absolute -bottom-1 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100",
-                    pathname === link.href ? "scale-x-100" : ""
-                  )}
-                  style={{
-                    transformOrigin: 'center',
-                    backgroundImage: 'linear-gradient(45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%), linear-gradient(-45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%)',
-                    backgroundSize: '8px 8px',
-                    backgroundRepeat: 'repeat-x',
-                    backgroundColor: 'transparent'
-                  }}
+                 <span className={cn(
+                  "absolute -bottom-2 left-1/2 -translate-x-1/2 w-full h-2 bg-no-repeat bg-bottom opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+                  pathname === link.href ? "opacity-100" : ""
+                )}
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`,
+                  backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 2.5" preserveAspectRatio="none"><path d="M.5 1.5c4.2-.8 8.4-.8 12.5-.2 2.5.4 4.9.8 7.4 1.2 5.2.7 10.3.7 15.5.2 2.5-.2 4.9-.5 7.4-.7 4.2-.3 8.4-.3 12.5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')`,
+                  backgroundSize: '100% auto',
+                }}
                 ></span>
               </Link>
             ))}
