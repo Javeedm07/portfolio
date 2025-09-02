@@ -56,26 +56,24 @@ export function Header() {
                   <span className="sr-only">Open Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <SheetHeader>
+              <SheetContent side="top" className="w-full">
+                <SheetHeader className="sr-only">
                   <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
-                <div className="flex flex-col h-full py-4">
-                  <nav className="flex flex-col space-y-4 mb-8">
+                <div className="flex flex-col items-center space-y-6 pt-10 pb-4">
+                  <nav className="flex flex-col items-center space-y-4">
                     {navLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="text-lg font-semibold text-foreground/70 transition-colors hover:text-foreground"
+                        className={cn("text-lg font-semibold transition-colors hover:text-foreground", pathname === link.href ? "text-foreground" : "text-foreground/70")}
                       >
                         {link.label}
                       </Link>
                     ))}
                   </nav>
-                  <div className="mt-auto flex justify-center">
-                     <ThemeToggle />
-                  </div>
+                  <ThemeToggle />
                 </div>
               </SheetContent>
             </Sheet>
