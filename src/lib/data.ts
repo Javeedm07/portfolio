@@ -1,9 +1,12 @@
 
 export const personalData = {
   name: "Javeed",
+  jobTitle: "Full Stack Developer",
+  location: "Vijayawada, Andhra Pradesh, India",
   email: "durgijaveed07@gmail.com",
   phone: "+91 9391531765",
   website: "javeed-dev.vercel.app",
+  resumeUrl: "/resume.pdf", // Add a path to your resume PDF in the /public folder
   heroTitle: "Building digital products, brands, and experiences.",
   heroSubtitle: "A passionate developer specializing in Full Stack Web Development and Machine Learning.",
   aboutTitle: "I'm a developer with a passion for creating and problem-solving.",
