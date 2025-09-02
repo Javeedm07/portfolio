@@ -39,7 +39,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative text-sm font-medium after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100",
+                  "relative text-sm font-semibold after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100",
                   pathname === link.href ? "after:scale-x-100 text-foreground" : "text-foreground/70"
                 )}
               >
@@ -67,7 +67,7 @@ export function Header() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="text-lg font-medium text-foreground/70 transition-colors hover:text-foreground"
+                        className="text-lg font-semibold text-foreground/70 transition-colors hover:text-foreground"
                       >
                         {link.label}
                       </Link>
