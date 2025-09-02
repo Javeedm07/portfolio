@@ -40,12 +40,12 @@ export function ThemeToggle() {
     return (
         <button
             onClick={handleToggle}
-            className="fixed top-0 right-8 z-50 p-4 transition-transform duration-300 ease-in-out text-muted-foreground hover:text-foreground"
+            className="fixed top-4 right-8 z-50 p-4 transition-transform duration-300 ease-in-out text-muted-foreground hover:text-foreground"
             style={{ transform: isPulled ? 'translateY(10px)' : 'translateY(0)' }}
             aria-label="Toggle theme"
         >
             <div className="relative">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-foreground/50"></div>
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-0.5 h-8 bg-foreground/50"></div>
                 <TasselIcon className="h-6 w-6" />
             </div>
         </button>
