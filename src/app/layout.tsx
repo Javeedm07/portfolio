@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
+import { personalData } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'MirrorFolio',
-  description: 'A portfolio template mirroring a sleek design.',
+  title: `${personalData.name} | Portfolio`,
+  description: personalData.about,
 };
 
 export default function RootLayout({

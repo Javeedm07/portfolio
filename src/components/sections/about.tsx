@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ScrollFadeIn } from '@/components/scroll-fade-in';
 import { Card, CardContent } from '@/components/ui/card';
+import { personalData } from '@/lib/data';
 
 export function About() {
   return (
@@ -14,14 +15,14 @@ export function About() {
         <ScrollFadeIn delay="200ms" className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
           <div className="md:col-span-3 space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold tracking-tight font-headline">
-              I'm a designer with a passion for creating.
+              {personalData.aboutTitle}
             </h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I am a passionate product designer with a knack for creating intuitive and beautiful user experiences. My journey into design started with a curiosity for how things work, which quickly evolved into a full-fledged passion for crafting digital products that are not only functional but also delightful to use.
+                {personalData.about}
               </p>
               <p>
-                Over the years, I've had the opportunity to work on a variety of projects, from mobile apps to large-scale web applications. I believe in a user-centered design approach, and I always strive to understand the needs and pain points of the end-users to create solutions that truly make a difference.
+                I thrive on building things for the web and have a strong foundation in both front-end and back-end technologies. My expertise lies in creating seamless user experiences and robust, scalable applications. I'm always eager to learn and apply new technologies to solve real-world problems.
               </p>
             </div>
           </div>

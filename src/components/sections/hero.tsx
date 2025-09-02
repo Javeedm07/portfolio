@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ScrollFadeIn } from '@/components/scroll-fade-in';
+import { personalData } from '@/lib/data';
 
 export function Hero() {
   return (
@@ -8,12 +9,12 @@ export function Hero() {
       <div className="text-center w-full">
         <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 font-headline">
-            Building digital products, brands, and experiences.
+            {personalData.heroTitle}
           </h1>
         </ScrollFadeIn>
         <ScrollFadeIn delay="200ms">
           <p className="max-w-3xl mx-auto text-base md:text-xl text-muted-foreground mb-10">
-            A Product Designer and Visual Developer. I specialize in UI/UX Design, Responsive Web Design, and Visual Development.
+            {personalData.heroSubtitle}
           </p>
         </ScrollFadeIn>
         <ScrollFadeIn delay="400ms">
