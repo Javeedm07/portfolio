@@ -1,5 +1,6 @@
+
 export const personalData = {
-  name: "Mahammad Javeed",
+  name: "Javeed",
   email: "durgijaveed07@gmail.com",
   phone: "+91 9391531765",
   website: "javeed-dev.vercel.app",
