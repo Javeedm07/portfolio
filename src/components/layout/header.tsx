@@ -73,7 +73,6 @@ export function Header() {
                       </Link>
                     ))}
                   </nav>
-                  <ThemeToggle />
                 </div>
               </SheetContent>
             </Sheet>
