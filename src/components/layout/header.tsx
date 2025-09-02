@@ -60,6 +60,11 @@ export function Header() {
                 <SheetHeader className="sr-only">
                   <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
+                <div className="absolute top-0 left-0 flex h-20 items-center px-4">
+                  <Link href="/" className="text-xl font-bold text-foreground">
+                    {personalData.name}
+                  </Link>
+                </div>
                 <div className="flex flex-col items-center space-y-6 pt-10 pb-4">
                   <nav className="flex flex-col items-center space-y-4">
                     {navLinks.map((link) => (
