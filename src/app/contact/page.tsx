@@ -7,7 +7,7 @@ export default function ContactPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow pt-20">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-20 2xl:px-48">
             <Contact />
         </div>
       </main>

@@ -33,7 +33,7 @@ const projects = [
 
 export function Work() {
   return (
-    <section id="work" className="py-24 lg:py-32 bg-secondary/30 -mx-4 sm:-mx-6 lg:-mx-12 xl:-mx-20 2xl:-mx-32 px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32">
+    <section id="work" className="py-24 lg:py-32">
       <div>
         <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-headline mb-12 text-center">
