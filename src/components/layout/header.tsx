@@ -39,14 +39,23 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative text-sm font-medium transition-colors",
+                  "group relative text-sm font-medium transition-colors",
                   pathname === link.href ? "text-foreground" : "text-foreground/70 hover:text-foreground"
                 )}
               >
                 {link.label}
-                {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"></span>
-                )}
+                <span className={cn(
+                    "absolute -bottom-1 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100",
+                    pathname === link.href ? "scale-x-100" : ""
+                  )}
+                  style={{
+                    transformOrigin: 'center',
+                    backgroundImage: 'linear-gradient(45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%), linear-gradient(-45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%)',
+                    backgroundSize: '8px 8px',
+                    backgroundRepeat: 'repeat-x',
+                    backgroundColor: 'transparent'
+                  }}
+                ></span>
               </Link>
             ))}
           </nav>
