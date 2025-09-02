@@ -92,46 +92,43 @@ export default function ResumePage() {
             </ScrollFadeIn>
             
             <ScrollFadeIn delay="600ms">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl font-semibold uppercase tracking-widest">Skills</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {Object.entries(resumeData.skills).map(([category, skills]) => (
-                    <div key={category}>
-                      <h4 className="font-semibold mb-3 capitalize text-muted-foreground">{category}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.map((skill) => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+              <section>
+                <h2 className="text-2xl font-semibold uppercase tracking-widest mb-8">Skills</h2>
+                <Card>
+                  <CardContent className="space-y-4 pt-6">
+                    {Object.entries(resumeData.skills).map(([category, skills]) => (
+                      <div key={category}>
+                        <h4 className="font-semibold mb-3 capitalize text-muted-foreground">{category}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {skills.map((skill) => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
+                    ))}
+                  </CardContent>
+                </Card>
+              </section>
             </ScrollFadeIn>
             
             <ScrollFadeIn delay="800ms">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-semibold uppercase tracking-widest">Certifications</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {resumeData.certifications.map((cert, index) => (
-                      <p key={index} className="text-muted-foreground">{cert}</p>
-                    ))}
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-semibold uppercase tracking-widest">Awards</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {resumeData.awards.map((award, index) => (
-                      <p key={index} className="text-muted-foreground">{award}</p>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
+              <section>
+                <h2 className="text-2xl font-semibold uppercase tracking-widest mb-8">Certifications</h2>
+                <div className="space-y-3 text-muted-foreground">
+                  {resumeData.certifications.map((cert, index) => (
+                    <p key={index}>{cert}</p>
+                  ))}
+                </div>
+              </section>
+            </ScrollFadeIn>
+
+            <ScrollFadeIn delay="1000ms">
+              <section>
+                <h2 className="text-2xl font-semibold uppercase tracking-widest mb-8">Awards</h2>
+                <div className="space-y-3 text-muted-foreground">
+                  {resumeData.awards.map((award, index) => (
+                    <p key={index}>{award}</p>
+                  ))}
+                </div>
+              </section>
             </ScrollFadeIn>
           </div>
         </div>
