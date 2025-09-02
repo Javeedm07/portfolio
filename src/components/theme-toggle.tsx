@@ -14,7 +14,7 @@ export function ThemeToggle() {
     if (!mounted) {
         // Render a placeholder or nothing on the server
         return (
-            <div className="fixed top-6 right-12 z-[999]" style={{ width: '2.25em', height: '1.5em' }}></div>
+            <div style={{ width: '40px', height: '40px' }}></div>
         );
     }
 
@@ -25,7 +25,7 @@ export function ThemeToggle() {
     }
 
     return (
-        <label className="switch fixed top-6 right-12 z-[999]">
+        <label className="switch">
             <input
                 className="switch__input"
                 type="checkbox"
