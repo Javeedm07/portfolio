@@ -13,9 +13,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { personalData } from '@/lib/data';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/work', label: 'Work' },
@@ -35,9 +38,15 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+                className={cn(
+                  "relative text-sm font-medium transition-colors",
+                  pathname === link.href ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+                )}
               >
                 {link.label}
+                {pathname === link.href && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary"></span>
+                )}
               </Link>
             ))}
           </nav>
