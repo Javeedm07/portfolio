@@ -30,7 +30,7 @@ export function HomeWork() {
           </Button>
         </ScrollFadeIn>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {projects.slice(0, 2).map((project, index) => (
+          {projects.slice(0, 4).map((project, index) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
