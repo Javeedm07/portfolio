@@ -5,7 +5,7 @@ import { ScrollFadeIn } from '@/components/scroll-fade-in';
 export function Hero() {
   return (
     <section id="hero" className="flex items-center min-h-screen pt-20">
-      <div className="container mx-auto px-4 md:px-6 text-center">
+      <div className="text-center">
         <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 font-headline">
             Building digital products, brands, and experiences.

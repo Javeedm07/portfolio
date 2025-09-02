@@ -33,8 +33,8 @@ const projects = [
 
 export function Work() {
   return (
-    <section id="work" className="py-24 lg:py-32 bg-secondary/30">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="work" className="py-24 lg:py-32 bg-secondary/30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+      <div>
         <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-headline mb-12 text-center">
             Selected Work

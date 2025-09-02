@@ -6,7 +6,7 @@ import Link from 'next/link';
 export function Contact() {
   return (
     <section id="contact" className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 md:px-6 text-center">
+      <div className="text-center">
         <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-headline mb-4">
             Let's talk
