@@ -16,9 +16,10 @@ import { Menu } from 'lucide-react';
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#work', label: 'Work' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/work', label: 'Work' },
+    { href: '/resume', label: 'Resume' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -39,9 +40,7 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="hidden md:block">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>

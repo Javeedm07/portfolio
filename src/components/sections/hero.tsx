@@ -4,7 +4,7 @@ import { ScrollFadeIn } from '@/components/scroll-fade-in';
 
 export function Hero() {
   return (
-    <section id="hero" className="flex items-center min-h-screen pt-20 -mx-4 sm:-mx-6 lg:-mx-8">
+    <section id="hero" className="flex items-center min-h-screen pt-20">
       <div className="text-center w-full">
         <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 font-headline">
@@ -19,10 +19,10 @@ export function Hero() {
         <ScrollFadeIn delay="400ms">
           <div className="flex justify-center gap-4">
             <Button asChild size="lg">
-              <Link href="#about">About Me</Link>
+              <Link href="/contact">Contact Me</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="#work">Latest Work</Link>
+              <Link href="/work">Latest Work</Link>
             </Button>
           </div>
         </ScrollFadeIn>
