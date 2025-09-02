@@ -9,11 +9,13 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8">
-        <Hero />
-        <About />
-        <Work />
-        <Contact />
+      <main className="flex-grow">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32">
+          <Hero />
+          <About />
+          <Work />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
