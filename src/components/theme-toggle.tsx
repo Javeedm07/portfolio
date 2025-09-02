@@ -2,10 +2,21 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { cn } from "@/lib/utils"
 
 export function ThemeToggle() {
     const { setTheme, theme } = useTheme()
+
+    // The component might render on the server where window is not available,
+    // so we need to wait for it to be mounted on the client.
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => setMounted(true), []);
+
+    if (!mounted) {
+        // Render a placeholder or nothing on the server
+        return (
+            <div className="fixed top-6 right-12 z-[999]" style={{ width: '2.25em', height: '1.5em' }}></div>
+        );
+    }
 
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
@@ -14,21 +25,29 @@ export function ThemeToggle() {
     }
 
     return (
-        <button
-            onClick={toggleTheme}
-            className="fixed top-6 right-12 z-[999] flex items-center justify-center rounded-full bg-secondary/50 p-1 w-24 h-10 text-sm font-bold text-foreground/80"
-            aria-label="Toggle theme"
-        >
-            <div className={cn(
-                "absolute flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 ease-in-out",
-                isDark ? "translate-x-[2.25rem] bg-primary text-primary-foreground" : "translate-x-[-0.75rem] bg-primary text-primary-foreground"
-            )}>
-                O
-            </div>
-            <span className="transition-opacity duration-200">
-                <span className={cn("opacity-0", isDark && "opacity-100")}>N</span>
-                <span className={cn("opacity-100", isDark && "opacity-0")}>FF</span>
-            </span>
-        </button>
+        <label className="switch fixed top-6 right-12 z-[999]">
+            <input
+                className="switch__input"
+                type="checkbox"
+                role="switch"
+                checked={isDark}
+                onChange={toggleTheme}
+            />
+            <svg className="switch__letters" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                <g stroke="currentcolor" strokeLinecap="round" strokeWidth="4" transform="translate(0,4)">
+                    <g className="switch__letter">
+                        <polyline className="switch__letter-stroke" points="2 2,2 14" />
+                        <polyline className="switch__letter-stroke" points="2 2,16 2" strokeDasharray="14 16" strokeDashoffset="8" transform="rotate(0,2,2)" />
+                        <polyline className="switch__letter-stroke" points="2 8,6 8" strokeDasharray="4 6" />
+                    </g>
+                    <g className="switch__letter" transform="translate(14,0)">
+                        <polyline className="switch__letter-stroke" points="2 2,2 14" />
+                        <polyline className="switch__letter-stroke" points="2 2,8 2" strokeDasharray="6 8" />
+                        <polyline className="switch__letter-stroke" points="2 8,6 8" strokeDasharray="4 6" />
+                    </g>
+                </g>
+            </svg>
+            <span className="switch__text">Theme</span>
+        </label>
     )
 }
