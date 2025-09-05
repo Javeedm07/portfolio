@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Contact } from '@/components/sections/contact';
+import { ContactForm } from '@/components/sections/contact-form';
 
 export default function ContactPage() {
   return (
@@ -8,7 +8,7 @@ export default function ContactPage() {
       <Header />
       <main className="flex-grow pt-20">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-48">
-            <Contact />
+            <ContactForm />
         </div>
       </main>
       <Footer />
