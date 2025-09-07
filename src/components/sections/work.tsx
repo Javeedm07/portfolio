@@ -22,7 +22,9 @@ export function Work() {
         </ScrollFadeIn>
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (
-             <ProjectCard key={project.slug} project={project} />
+             <ScrollFadeIn key={project.slug} delay={`${index * 100}ms`}>
+                <ProjectCard project={project} />
+             </ScrollFadeIn>
           ))}
         </div>
       </div>
