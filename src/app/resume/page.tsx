@@ -18,15 +18,16 @@ export default function ResumePage() {
           
           <ScrollFadeIn>
             <section className="flex flex-col sm:flex-row items-start gap-8 mb-16">
-              <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 rounded-full overflow-hidden border-4 border-primary/10 shadow-lg">
                 <Image
-                  src="/image.jpg"
+                  src="/image.png"
                   alt={personalData.name}
                   width={300}
                   height={300}
-                  className="rounded-full object-cover border-4 border-card"
+                  className="object-cover w-full h-full"
                 />
               </div>
+
               <div className="space-y-3 flex-grow">
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">{personalData.name}</h1>
                 <p className="text-xl font-medium text-muted-foreground uppercase tracking-widest">{personalData.jobTitle}</p>
