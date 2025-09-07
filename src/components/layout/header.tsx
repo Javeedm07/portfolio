@@ -29,7 +29,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-48">
-        <Link href="/" className="text-xl font-bold text-foreground">
+        <Link href="/" className="text-2xl font-bold text-foreground">
           {personalData.name}
         </Link>
         <div className="flex items-center gap-6">
@@ -61,7 +61,7 @@ export function Header() {
                   <SheetTitle>Menu</SheetTitle>
                 </SheetHeader>
                 <div className="absolute top-0 left-0 flex h-20 items-center px-4">
-                  <Link href="/" className="text-xl font-bold text-foreground">
+                  <Link href="/" className="text-2xl font-bold text-foreground">
                     {personalData.name}
                   </Link>
                 </div>
