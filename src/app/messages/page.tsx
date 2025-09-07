@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { verifyPassword } from '@/actions/sendMessage';
 import { useToast } from '@/hooks/use-toast';
 import { Eye, EyeOff } from 'lucide-react';
 
@@ -32,10 +31,12 @@ export default function MessagesPage() {
 
   const checkPassword = async () => {
     setIsChecking(true);
-    const result = await verifyPassword(password);
+    // This is a simple client-side check. 
+    // In a real application, this should be a server-side check.
+    const isCorrect = password === process.env.NEXT_PUBLIC_MESSAGES_PASSWORD;
     setIsChecking(false);
 
-    if (result.success) {
+    if (isCorrect) {
       setIsAuthenticated(true);
     } else {
       toast({

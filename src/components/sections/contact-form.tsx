@@ -17,8 +17,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { ScrollFadeIn } from "@/components/scroll-fade-in"
 import { useToast } from "@/hooks/use-toast"
 import { Send } from "lucide-react"
-import { sendMessage } from "@/actions/sendMessage"
 import { useState } from "react"
+import { db } from "@/lib/firebase"
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -47,21 +48,25 @@ export function ContactForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const result = await sendMessage(values);
-    setIsSubmitting(false);
-
-    if (result.success) {
+    try {
+      await addDoc(collection(db, "messages"), {
+        ...values,
+        timestamp: serverTimestamp(),
+      });
       toast({
         title: "Message Sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       })
       form.reset()
-    } else {
+    } catch (error) {
+      console.error("Error adding document: ", error);
       toast({
         title: "Error",
-        description: result.error || "Something went wrong. Please try again.",
+        description: "Failed to send message. Please try again later.",
         variant: "destructive",
       })
+    } finally {
+        setIsSubmitting(false);
     }
   }
 
