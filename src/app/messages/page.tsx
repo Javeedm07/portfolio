@@ -11,6 +11,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { useToast } from '@/hooks/use-toast';
 import { Eye, EyeOff } from 'lucide-react';
+import { verifyPassword } from '@/actions/verifyPassword';
 
 type Message = {
   id: string;
@@ -31,19 +32,25 @@ export default function MessagesPage() {
 
   const checkPassword = async () => {
     setIsChecking(true);
-    // This is a simple client-side check. 
-    // In a real application, this should be a server-side check.
-    const isCorrect = password === process.env.NEXT_PUBLIC_MESSAGES_PASSWORD;
-    setIsChecking(false);
-
-    if (isCorrect) {
-      setIsAuthenticated(true);
-    } else {
+    try {
+      const isCorrect = await verifyPassword(password);
+      if (isCorrect) {
+        setIsAuthenticated(true);
+      } else {
+        toast({
+          title: 'Incorrect Password',
+          description: 'Please try again.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
       toast({
-        title: 'Incorrect Password',
-        description: 'Please try again.',
+        title: 'Error',
+        description: 'An error occurred while verifying the password.',
         variant: 'destructive',
       });
+    } finally {
+      setIsChecking(false);
     }
   };
 
