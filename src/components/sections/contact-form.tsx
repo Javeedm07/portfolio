@@ -17,6 +17,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { ScrollFadeIn } from "@/components/scroll-fade-in"
 import { useToast } from "@/hooks/use-toast"
 import { Send } from "lucide-react"
+import { sendMessage } from "@/actions/sendMessage"
+import { useState } from "react"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -32,6 +34,7 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,13 +45,24 @@ export function ContactForm() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
-    form.reset()
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    const result = await sendMessage(values);
+    setIsSubmitting(false);
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      })
+      form.reset()
+    } else {
+      toast({
+        title: "Error",
+        description: result.error || "Something went wrong. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (
@@ -110,8 +124,8 @@ export function ContactForm() {
               )}
             />
             <div className="text-center">
-                <Button type="submit" size="lg">
-                    Send Message <Send className="ml-2 h-4 w-4" />
+                <Button type="submit" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Send Message"} <Send className="ml-2 h-4 w-4" />
                 </Button>
             </div>
           </form>

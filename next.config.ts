@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  env: {
+    MESSAGES_PASSWORD: process.env.MESSAGES_PASSWORD,
+  }
 };
 
 export default nextConfig;
