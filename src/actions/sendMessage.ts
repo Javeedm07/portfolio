@@ -28,3 +28,8 @@ export async function sendMessage(values: z.infer<typeof formSchema>) {
     return { success: false, error: "Failed to send message" };
   }
 }
+
+export async function verifyPassword(password: string) {
+  const isCorrect = password === process.env.MESSAGES_PASSWORD;
+  return { success: isCorrect };
+}

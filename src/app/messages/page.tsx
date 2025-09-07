@@ -8,6 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { verifyPassword } from '@/actions/sendMessage';
+import { useToast } from '@/hooks/use-toast';
 
 type Message = {
   id: string;
@@ -24,40 +26,48 @@ export default function MessagesPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isChecking, setIsChecking] = useState(false);
+  const { toast } = useToast();
 
-  const checkPassword = () => {
-    if (password === process.env.NEXT_PUBLIC_MESSAGES_PASSWORD) {
+  const checkPassword = async () => {
+    setIsChecking(true);
+    const result = await verifyPassword(password);
+    setIsChecking(false);
+
+    if (result.success) {
       setIsAuthenticated(true);
     } else {
-      alert('Incorrect password');
+      toast({
+        title: 'Incorrect Password',
+        description: 'Please try again.',
+        variant: 'destructive',
+      });
     }
   };
-  
-  // This is a workaround to use the env variable on client side.
-  // A proper implementation would have this check on a server action.
-  useEffect(() => {
-    const fetchPassword = async () => {
-        const response = await fetch('/api/get-password');
-        const data = await response.json();
-        process.env.NEXT_PUBLIC_MESSAGES_PASSWORD = data.password;
-    }
-    fetchPassword();
-  }, [])
 
   useEffect(() => {
     if (isAuthenticated) {
       const fetchMessages = async () => {
         setLoading(true);
-        const messagesCollection = collection(db, 'messages');
-        const q = query(messagesCollection, orderBy('timestamp', 'desc'));
-        const messagesSnapshot = await getDocs(q);
-        const messagesList = messagesSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })) as Message[];
-        setMessages(messagesList);
-        setLoading(false);
+        try {
+          const messagesCollection = collection(db, 'messages');
+          const q = query(messagesCollection, orderBy('timestamp', 'desc'));
+          const messagesSnapshot = await getDocs(q);
+          const messagesList = messagesSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })) as Message[];
+          setMessages(messagesList);
+        } catch (error) {
+           toast({
+            title: 'Error Fetching Messages',
+            description: 'Could not retrieve messages from the database.',
+            variant: 'destructive',
+          });
+        } finally {
+          setLoading(false);
+        }
       };
       fetchMessages();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, toast]);
 
   if (!isAuthenticated) {
     return (
@@ -76,8 +86,11 @@ export default function MessagesPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                     onKeyDown={(e) => e.key === 'Enter' && checkPassword()}
+                    disabled={isChecking}
                     />
-                    <Button onClick={checkPassword}>Access Messages</Button>
+                    <Button onClick={checkPassword} disabled={isChecking}>
+                        {isChecking ? 'Verifying...' : 'Access Messages'}
+                    </Button>
                 </CardContent>
                 </Card>
             </div>
@@ -95,6 +108,8 @@ export default function MessagesPage() {
           <h1 className="text-3xl font-bold mb-8">Contact Form Messages</h1>
           {loading ? (
             <p>Loading messages...</p>
+          ) : messages.length === 0 ? (
+            <p>No messages yet.</p>
           ) : (
             <div className="space-y-6">
               {messages.map((message) => (
