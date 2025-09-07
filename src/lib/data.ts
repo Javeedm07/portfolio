@@ -1,8 +1,8 @@
 
 export const personalData = {
   name: "Javeed",
-  jobTitle: "Full Stack Developer",
-  location: "Vijayawada, Andhra Pradesh, India",
+  jobTitle: "Software Engineer",
+  location: "Hyderabad, Telangana, India",
   email: "durgijaveed07@gmail.com",
   phone: "+91 9391531765",
   website: "javeed-dev.vercel.app",
