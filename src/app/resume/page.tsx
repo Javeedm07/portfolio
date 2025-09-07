@@ -120,16 +120,6 @@ export default function ResumePage() {
               </section>
             </ScrollFadeIn>
 
-            <ScrollFadeIn delay="1000ms">
-              <section>
-                <h2 className="text-2xl font-semibold uppercase tracking-widest mb-8">Awards</h2>
-                <div className="space-y-3 text-muted-foreground">
-                  {resumeData.awards.map((award, index) => (
-                    <p key={index}>{award}</p>
-                  ))}
-                </div>
-              </section>
-            </ScrollFadeIn>
           </div>
         </div>
       </main>

@@ -3,7 +3,7 @@ export const resumeData = {
     {
       role: "Data Science Intern",
       company: "Skilldzire",
-      period: "Jan 2025 - Present | Vijayawada",
+      period: "Dec 2024 - Apr 2025 | Vijayawada",
       description: [
         "Learning data science fundamentals, Python basics, data structures, Pandas, NumPy, and machine learning concepts.",
         "Applying knowledge through hands-on exercises and practical implementations."
@@ -35,7 +35,7 @@ export const resumeData = {
       degree: "B.Tech in CSE",
       institution: "ALIET, JNTUK",
       period: "2021 - 2025 | Vijayawada",
-      grade: "CGPA: 8.8/10.0",
+      grade: "CGPA: 8.75/10.0",
     },
     {
       degree: "Intermediate (MPC)",
@@ -63,10 +63,6 @@ export const resumeData = {
     "Python Essentials (CISCO)",
     "Python Basic (HackerRank)",
     "Problem Solving Basic (HackerRank)",
-  ],
-  awards: [
-    "2024 - Third Prize, Academic Excellence, ALIET, CSE",
-    "2024 - Winner, Coding Competition, Samiksha 2K23"
   ],
   languages: ["English", "Hindi", "Telugu"],
 };
