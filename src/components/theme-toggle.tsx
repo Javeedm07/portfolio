@@ -8,23 +8,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { Button } from "./ui/button"
+import { Moon, Sun } from "lucide-react"
 
 export function ThemeToggle() {
     const { setTheme, theme } = useTheme()
 
-    // The component might render on the server where window is not available,
-    // so we need to wait for it to be mounted on the client.
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => setMounted(true), []);
-
-    if (!mounted) {
-        // Render a placeholder or nothing on the server
-        return (
-            <div style={{ width: '40px', height: '40px' }}></div>
-        );
-    }
-
-    const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDark = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     const toggleTheme = () => {
         setTheme(isDark ? 'light' : 'dark');
@@ -34,33 +24,13 @@ export function ThemeToggle() {
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger asChild>
-                    <label className="switch">
-                        <input
-                            className="switch__input"
-                            type="checkbox"
-                            role="switch"
-                            checked={isDark}
-                            onChange={toggleTheme}
-                        />
-                        <svg className="switch__letters" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
-                            <g stroke="currentcolor" strokeLinecap="round" strokeWidth="4" transform="translate(0,4)">
-                                <g className="switch__letter">
-                                    <polyline className="switch__letter-stroke" points="2 2,2 14" />
-                                    <polyline className="switch__letter-stroke" points="2 2,16 2" strokeDasharray="14 16" strokeDashoffset="8" transform="rotate(0,2,2)" />
-                                    <polyline className="switch__letter-stroke" points="2 8,6 8" strokeDasharray="4 6" />
-                                </g>
-                                <g className="switch__letter" transform="translate(14,0)">
-                                    <polyline className="switch__letter-stroke" points="2 2,2 14" />
-                                    <polyline className="switch__letter-stroke" points="2 2,8 2" strokeDasharray="6 8" />
-                                    <polyline className="switch__letter-stroke" points="2 8,6 8" strokeDasharray="4 6" />
-                                </g>
-                            </g>
-                        </svg>
-                        <span className="switch__text">Theme</span>
-                    </label>
+                    <Button variant="ghost" size="icon" onClick={toggleTheme}>
+                        {isDark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+                        <span className="sr-only">Toggle theme</span>
+                    </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                    <p>Switch to {isDark ? 'Light' : 'Dark'} Mode</p>
+                    <p>Switch to {isDark ? 'light' : 'dark'} mode</p>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
