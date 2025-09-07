@@ -3,10 +3,11 @@ export const resumeData = {
     {
       role: "Software Engineer",
       company: "Mivada",
-      period: "Aug 2025 - Present",
+      period: "Aug 2024 - Present | Hyderabad",
       description: [
-        "Developing and maintaining web applications using modern technologies.",
-        "Collaborating with cross-functional teams to deliver high-quality software solutions."
+        "Currently undergoing intensive training on the Workday platform (Aug 2024 - Dec 2024).",
+        "Developing expertise in Workday functionalities and integration methodologies.",
+        "Poised to transition into a role as a Workday Functional Consultant or Workday Integration Consultant based on training performance."
       ],
     },
     {
