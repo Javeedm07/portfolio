@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { db } from '@/lib/firebase';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -18,9 +18,7 @@ type Message = {
   name: string;
   email: string;
   message: string;
-  timestamp: {
-    toDate: () => Date;
-  };
+  timestamp: Timestamp;
 };
 
 export default function MessagesPage() {

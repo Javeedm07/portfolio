@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp, getApps, getApp, App } from "firebase/app";
+import { getFirestore, Firestore } from "firebase/firestore";
+import admin from 'firebase-admin';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,8 +14,35 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Initialize Firebase for the client
+let app: App;
+let db: Firestore;
 
-export { db };
+if (getApps().length === 0) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApp();
+}
+db = getFirestore(app);
+
+
+// Initialize Firebase Admin for the server
+let adminDb: admin.firestore.Firestore;
+
+if (!admin.apps.length) {
+  try {
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      }),
+    });
+  } catch (error) {
+    console.log('Firebase admin initialization error', error);
+  }
+}
+
+adminDb = admin.firestore();
+
+export { db, adminDb };

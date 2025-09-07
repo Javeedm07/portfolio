@@ -1,8 +1,8 @@
 "use server";
 
 import { z } from "zod";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { adminDb } from "@/lib/firebase";
+import { FieldValue } from "firebase-admin/firestore";
 
 const formSchema = z.object({
   name: z.string().min(2),
@@ -18,9 +18,9 @@ export async function sendMessage(values: z.infer<typeof formSchema>) {
   }
 
   try {
-    await addDoc(collection(db, "messages"), {
+    await adminDb.collection("messages").add({
       ...parsed.data,
-      timestamp: serverTimestamp(),
+      timestamp: FieldValue.serverTimestamp(),
     });
     return { success: true };
   } catch (error) {
