@@ -16,8 +16,8 @@ export const resumeData = {
       period: "Dec 2024 - Apr 2025 | Vijayawada",
       link: "https://skilldzire.com",
       description: [
-        "Learning data science fundamentals, Python basics, data structures, Pandas, NumPy, and machine learning concepts.",
-        "Applying knowledge through hands-on exercises and practical implementations."
+        "Learned data science fundamentals, Python basics, data structures, Pandas, NumPy, and machine learning concepts.",
+        "Applied knowledge through hands-on exercises and practical implementations."
       ],
     },
     {
