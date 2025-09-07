@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowUpRight, Download } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function ResumePage() {
   return (
@@ -60,7 +60,15 @@ export default function ResumePage() {
                       </div>
                       <div className="md:col-span-3">
                         <h3 className="text-xl font-bold">{exp.role}</h3>
-                        <p className="font-medium text-muted-foreground mb-3">{exp.company} | {exp.period.split('|')[1]?.trim()}</p>
+                        <p className="font-medium text-muted-foreground mb-3">
+                           {exp.link ? (
+                            <Link href={exp.link} target="_blank" className="hover:underline hover:text-foreground transition-colors">
+                              {exp.company} <ArrowUpRight className="inline-block h-4 w-4" />
+                            </Link>
+                          ) : (
+                            exp.company
+                          )} | {exp.period.split('|')[1]?.trim()}
+                        </p>
                         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                           {exp.description.map((item, i) => <li key={i}>{item}</li>)}
                         </ul>

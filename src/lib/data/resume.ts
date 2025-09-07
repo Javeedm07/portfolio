@@ -3,17 +3,18 @@ export const resumeData = {
     {
       role: "Software Engineer",
       company: "Mivada",
-      period: "Aug 2024 - Present | Hyderabad",
+      period: "Aug 2025 - Present | Hyderabad",
+      link: "https://www.mivada.com",
       description: [
-        "Currently undergoing intensive training on the Workday platform (Aug 2024 - Dec 2024).",
+        "Currently undergoing intensive training on the Workday platform.",
         "Developing expertise in Workday functionalities and integration methodologies.",
-        "Poised to transition into a role as a Workday Functional Consultant or Workday Integration Consultant based on training performance."
       ],
     },
     {
       role: "Data Science Intern",
       company: "Skilldzire",
       period: "Dec 2024 - Apr 2025 | Vijayawada",
+      link: "https://skilldzire.com",
       description: [
         "Learning data science fundamentals, Python basics, data structures, Pandas, NumPy, and machine learning concepts.",
         "Applying knowledge through hands-on exercises and practical implementations."
@@ -23,6 +24,7 @@ export const resumeData = {
       role: "Java Full Stack Intern",
       company: "Data Valley",
       period: "Jun 2024 - Aug 2024 | Vijayawada",
+      link: "https://www.datavalley.ai",
       description: [
         "Gained expertise in Java fundamentals, servlets, and Spring Boot.",
         "Developed a Student Management System as a mini-project using Maven and Spring Boot.",
@@ -33,6 +35,7 @@ export const resumeData = {
       role: "Machine Learning Intern",
       company: "Indian Servers",
       period: "May 2023 - Jul 2023 | Vijayawada",
+      link: "https://www.indianservers.com",
       description: [
         "Explored NLP fundamentals, text preprocessing, OpenAI API, Hugging Face, GPT, and BERT.",
         "Created Telegram quiz bot using SVM, achieving 88% response accuracy.",
