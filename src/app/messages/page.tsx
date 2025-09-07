@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -10,6 +11,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { verifyPassword } from '@/actions/sendMessage';
 import { useToast } from '@/hooks/use-toast';
+import { Eye, EyeOff } from 'lucide-react';
 
 type Message = {
   id: string;
@@ -23,6 +25,7 @@ type Message = {
 
 export default function MessagesPage() {
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -80,14 +83,28 @@ export default function MessagesPage() {
                     <CardTitle className="text-center">Enter Password</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-4">
-                    <Input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    onKeyDown={(e) => e.key === 'Enter' && checkPassword()}
-                    disabled={isChecking}
-                    />
+                    <div className="relative">
+                      <Input
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        onKeyDown={(e) => e.key === 'Enter' && checkPassword()}
+                        disabled={isChecking}
+                        className="pr-10"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="absolute inset-y-0 right-0 h-full px-3 text-muted-foreground hover:bg-transparent"
+                        onClick={() => setShowPassword(!showPassword)}
+                        disabled={isChecking}
+                        tabIndex={-1}
+                      >
+                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      </Button>
+                    </div>
                     <Button onClick={checkPassword} disabled={isChecking}>
                         {isChecking ? 'Verifying...' : 'Access Messages'}
                     </Button>
