@@ -20,12 +20,11 @@ export default function ResumePage() {
             <section className="flex flex-col sm:flex-row items-start gap-8 mb-16">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0">
                 <Image
-                  src="https://picsum.photos/300/300"
+                  src="/image.jpg"
                   alt={personalData.name}
                   width={300}
                   height={300}
                   className="rounded-full object-cover border-4 border-card"
-                  data-ai-hint="portrait person"
                 />
               </div>
               <div className="space-y-3 flex-grow">
