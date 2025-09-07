@@ -48,7 +48,7 @@ export const resumeData = {
       degree: "B.Tech in CSE",
       institution: "ALIET, JNTUK",
       period: "2021 - 2025 | Vijayawada",
-      grade: "CGPA: 8.75/10.0",
+      grade: "CGPA: 8.76/10.0",
     },
     {
       degree: "Intermediate (MPC)",
