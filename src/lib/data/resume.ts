@@ -24,7 +24,7 @@ export const resumeData = {
       role: "Java Full Stack Intern",
       company: "Data Valley",
       period: "Jun 2024 - Aug 2024 | Vijayawada",
-      link: "https://www.datavalley.ai",
+      link: "https://datavalley.ai/",
       description: [
         "Gained expertise in Java fundamentals, servlets, and Spring Boot.",
         "Developed a Student Management System as a mini-project using Maven and Spring Boot.",

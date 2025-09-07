@@ -63,7 +63,7 @@ export default function ResumePage() {
                         <p className="font-medium text-muted-foreground mb-3">
                            {exp.link ? (
                             <Link href={exp.link} target="_blank" className="hover:underline hover:text-foreground transition-colors">
-                              {exp.company} <ArrowUpRight className="inline-block h-4 w-4" />
+                              {exp.company}
                             </Link>
                           ) : (
                             exp.company
