@@ -21,7 +21,7 @@ export const projects: Project[] = [
     ],
     year: 2024,
     aiHint: 'finance analytics dashboard',
-    coverImage: '/bb-cover.jpg'
+    coverImage: '/bb-cover-image.jpg'
   },
   {
     slug: 'medconnect',
