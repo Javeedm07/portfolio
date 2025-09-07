@@ -50,7 +50,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {/* Image container */}
             <div className="relative aspect-video overflow-hidden m-4 rounded-xl">
               <Image
-                src={`https://picsum.photos/400/225?random=${project.slug}`}
+                src={project.coverImage || `https://picsum.photos/400/225?random=${project.slug}`}
                 alt={project.title}
                 width={400}
                 height={225}

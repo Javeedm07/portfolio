@@ -1,4 +1,15 @@
-export const projects = [
+export type Project = {
+  slug: string;
+  title: string;
+  tags: string[];
+  description: string;
+  details: string[];
+  year: number;
+  aiHint: string;
+  coverImage?: string;
+}
+
+export const projects: Project[] = [
   {
     slug: 'budget-buddy',
     title: 'Budget Buddy - AI Finance Tracker',
@@ -9,7 +20,8 @@ export const projects = [
       "Implemented secure authentication with Clerk and rate-limiting/bot protection via Arcjet.",
     ],
     year: 2024,
-    aiHint: 'finance analytics dashboard'
+    aiHint: 'finance analytics dashboard',
+    coverImage: '/bb-cover.jpg'
   },
   {
     slug: 'medconnect',

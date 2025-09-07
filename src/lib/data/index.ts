@@ -1,3 +1,3 @@
 export * from './personal';
-export * from './projects';
+export { type Project, projects } from './projects';
 export * from './resume';
