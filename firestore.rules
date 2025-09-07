@@ -1,13 +1,10 @@
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow anyone to create a message, but no one to read, update or delete them.
-    // Reading will be handled by the password-protected /messages page.
-    match /messages/{messageId} {
-      allow create: if true;
-      allow read, update, delete: if false;
+    match /messages/{documentId} {
+      allow read: if true;
+      allow write: if true;
     }
   }
 }
