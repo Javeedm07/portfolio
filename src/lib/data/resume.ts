@@ -1,6 +1,15 @@
 export const resumeData = {
   experience: [
     {
+      role: "Software Engineer",
+      company: "Mivada",
+      period: "Aug 2025 - Present",
+      description: [
+        "Developing and maintaining web applications using modern technologies.",
+        "Collaborating with cross-functional teams to deliver high-quality software solutions."
+      ],
+    },
+    {
       role: "Data Science Intern",
       company: "Skilldzire",
       period: "Dec 2024 - Apr 2025 | Vijayawada",
